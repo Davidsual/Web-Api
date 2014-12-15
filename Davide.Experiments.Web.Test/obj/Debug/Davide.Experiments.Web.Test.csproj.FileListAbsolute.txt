@@ -1,0 +1,5 @@
+C:\Users\Davide\Documents\GitHub\Web Api\Davide.Experiments.Web\Davide.Experiments.Web.Test\bin\Debug\Davide.Experiments.Web.Test.dll
+C:\Users\Davide\Documents\GitHub\Web Api\Davide.Experiments.Web\Davide.Experiments.Web.Test\bin\Debug\Davide.Experiments.Web.Test.pdb
+C:\Users\Davide\Documents\GitHub\Web Api\Davide.Experiments.Web\Davide.Experiments.Web.Test\obj\Debug\Davide.Experiments.Web.Test.csprojResolveAssemblyReference.cache
+C:\Users\Davide\Documents\GitHub\Web Api\Davide.Experiments.Web\Davide.Experiments.Web.Test\obj\Debug\Davide.Experiments.Web.Test.dll
+C:\Users\Davide\Documents\GitHub\Web Api\Davide.Experiments.Web\Davide.Experiments.Web.Test\obj\Debug\Davide.Experiments.Web.Test.pdb
