@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
+using Davide.Experiments.Web.UI.Infrastructure.Ioc;
+using Davide.Experiments.Web.UI.Models;
+using Microsoft.Practices.Unity;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace Davide.Experiments.Web.UI
 {
@@ -13,9 +12,9 @@ namespace Davide.Experiments.Web.UI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            var container = new UnityContainer();
+            container.RegisterType<IProductRepository, ProductRepository>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -25,6 +24,13 @@ namespace Davide.Experiments.Web.UI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Product>("Products");
+            config.MapODataServiceRoute(
+                routeName: "ODataRoute",
+                routePrefix: null,
+                model: builder.GetEdmModel());
         }
     }
 }
